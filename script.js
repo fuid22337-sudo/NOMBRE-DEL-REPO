@@ -1,7 +1,4 @@
 // Sistema de Inscripción Escolar — lógica del lado del cliente
-//
-// TODO (rama feature-validacion): completar la validación del formulario
-// de contacto antes de que el "envío" se considere exitoso.
 
 document.getElementById("form-contacto").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -10,9 +7,28 @@ document.getElementById("form-contacto").addEventListener("submit", function (e)
   const correo = document.getElementById("correo").value.trim();
   const mensaje = document.getElementById("mensaje").value.trim();
 
-  // TODO (rama feature-validacion): agregar aquí las reglas de validación,
-  // por ejemplo: que ningún campo esté vacío, y que el correo tenga un
-  // formato razonable (contenga "@" y ".").
+  // Validación: campos vacíos
+  if (nombre === "") {
+    alert("Error: El campo 'Nombre' no puede estar vacío.");
+    return;
+  }
 
-  alert("Formulario recibido (validación pendiente de implementar).");
+  if (correo === "") {
+    alert("Error: El campo 'Correo' no puede estar vacío.");
+    return;
+  }
+
+  if (mensaje === "") {
+    alert("Error: El campo 'Mensaje' no puede estar vacío.");
+    return;
+  }
+
+  // Validación: formato de correo (debe contener @ y .)
+  if (!correo.includes("@") || !correo.includes(".")) {
+    alert("Error: El correo debe contener '@' y '.' (ejemplo: usuario@dominio.com).");
+    return;
+  }
+
+  // Si todas las validaciones pasan
+  alert("¡Formulario enviado con éxito!");
 });
